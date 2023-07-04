@@ -1,0 +1,17 @@
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "Chowi_dev",
+    "password": "123"
+}
+
+###
+
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Chowi_dev",
+    "password": "123"
+}

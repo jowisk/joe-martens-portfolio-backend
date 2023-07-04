@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer')
 
-
 const Email = (options) => {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -13,7 +12,6 @@ const Email = (options) => {
     })
     transporter.sendMail(options, (err, info) => {
         if (err) {
-            console.log(err);
             return;
         }
     });
@@ -31,8 +29,9 @@ const sendEmail = ({ email, subject, body }) => {
             </div>
         `
     }
-    console.log("sent")
     Email(options)
 }
 
-module.exports = sendEmail
+module.exports = {
+    sendEmail
+}
