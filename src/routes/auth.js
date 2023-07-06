@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
         const user = await userController.findUser(req.body.username)
 
         if (user.length === 0) {
-            res.json('Invalid user')
+            res.json('Invalid credentials')
             return
         }
 
@@ -23,10 +23,11 @@ router.post('/login', async (req, res) => {
         );
 
         if (!validPass) {
-            res.json("Invalid password")
+            res.json("Invalid credentials")
             return
         }
-const token = jwt.sign(
+
+        const token = jwt.sign(
             {
                 username: user[0].username,
                 password: user[0].password
@@ -35,7 +36,6 @@ const token = jwt.sign(
             {
                 expiresIn: PROCESS.ENV.TOKEN_EXPIRATION
             }
-        
         )
 
         res.json({
